@@ -20,8 +20,6 @@ save_path = './figures/train4_batch'
 
 # Create Callbacks
 lr_reduce = ReduceLROnPlateau(monitor='loss',factor=0.01,patient=5)
-# checkpoint = ModelCheckpoint(filepath=root_dir + '/weights2/weights(4nottran_join).{epoch:02d}-{val_loss:.2f}.hdf5', verbose=1, save_best_only=True)
-# history_batch = LossHistory(semantic_joint)
 
 # Create model
 model = create_model(transfer = transfer, semantic_joint = semantic_joint)
@@ -36,10 +34,6 @@ if semantic_joint == True:
 else:
     model.compile(loss=depth_loss_function,
                 optimizer='Adagrad')
-
-if False:
-    # load weight as https://qiita.com/supersaiakujin/items/b9c9da9497c2163d5a74
-    model.load_weights(weight_path)
 
 
 #load data
